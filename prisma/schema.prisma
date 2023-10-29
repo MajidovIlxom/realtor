@@ -1,0 +1,120 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id                 Int     @id @default(autoincrement())
+  fullname           String
+  email              String  @unique
+  hashedpassword     String
+  hashedRefreshToken String?
+
+  @@map("admin")
+}
+
+model Realtor {
+  id              Int      @id @default(autoincrement())
+  name            String
+  firma_id        Int
+  is_active       Boolean
+  reg_data        DateTime
+  deactivate_date DateTime
+  photo_url       String
+  login           String
+  password        String
+
+  @@map("realtor")
+}
+
+// model Object {
+//   id Int @id @default(autoincrement())
+//   name String
+//   realtor_id Int
+//   object_type_id Int
+//   residence_type_id Int
+//   object_status_id Int
+//   is_studio Boolean
+//   floor Int
+//   floors_in_building Int
+//   total_area Int
+//   live_area Int
+//   kitchen_area Int
+//   rooms_area Int
+//   price Int
+//   currency_id Int
+//   price_per_square Int
+//   price_type Int
+//   renovation_id Int
+//   window_side_id Int
+//   room_type_id Int
+//   is_apartment Boolean
+//   is_luxury Boolean
+//   ceiling_height Int
+//   combined_bath_count Int
+//   separate_bath_count Int
+//   loggia_count Int
+//   loggia_description String
+//   balcony_count Int
+//   balcony_description String
+//   general_description String
+//   cadastral_numbre Int
+//   document String
+//   layout String
+//   fotos String
+//   online_show Boolean
+//   video String
+
+//   // Owner Relation
+
+//   ownership_id Int
+//   reason_deleting_id Int
+//   owner_cooperation_id Int
+//   relationship_type_id Int
+//   commission_amount Int
+//   commission_comment String
+//   deposit_amount Int
+//   deposit_paid Int
+//   owner_price_ideal Int
+//   owner_price_real Int
+//   owner_price_minimal Int
+
+//   // Addresslar yoziladigon joy
+
+//   region_id Int
+//   district_id Int
+//   area_id Int
+//   mahalla_id Int
+//   street_id Int
+//   house_number Int
+//   apartment_number Int
+//   location String
+//   landmark String
+//   metro_id Int
+//   location_description String
+
+//   // Bulding Character
+
+//   building_condition_id Int
+//   building_seria_id Int
+//   building_year Int
+//   wall_material_id Int
+//   overlaps_id Int
+//   water_supply_id Int
+//   heating_sistem_id Int
+//   is_gas Boolean
+//   is_electric Boolean
+//   passenger_evelators_count Int
+//   freight_evelators_count Int
+//   is_building_security Boolean
+//   parking_id Int
+//   is_demolition_planned Boolean
+
+// }
